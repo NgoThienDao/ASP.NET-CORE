@@ -1,0 +1,77 @@
+﻿@model IEnumerable<NgoThienDao.TrungTamNgoaiNgu.Models.Reponse.Student.StudentView>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success">Tạo mới</a>
+</p>
+
+<form method="post" class="form-inline" asp-controller="Book" asp-action="Index" style="margin-bottom: 20px">
+    <div class="border badge-pill bs-popover-auto border-primary">
+        <div>
+            <input type="text" name="keyword" class="badge-pill border-0" />
+            <button class="text-info btn btn-outline-light border-0">
+                <i class="fa fa-search">Tìm kiếm</i>
+            </button>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Male)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageRegistration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelLanguage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Male)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageRegistration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelLanguage)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id=item.ID }, new { @class = "btn btn-outline-success" })
+                @Html.ActionLink("Thông tin", "Details", new { id=item.ID }, new { @class = "btn btn-outline-warning" })
+                @Html.ActionLink("Xóa", "Delete", new { id=item.ID }, new { @class = "btn btn-outline-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
